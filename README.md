@@ -201,16 +201,4 @@ npm run preview
 - Просрочка определяется по дедлайну; отдельное поле статуса выполнения в текущей модели не предусмотрено.
 - Авторизация пользователей в текущей версии не реализована.
 - Для хранения задач используется MongoDB, для фотографий — файловая система сервера.
-"""
-out='/mnt/data/README.md'
-with open(out,'w',encoding='utf-8') as f: f.write(readme)
-# create updated copy of original zip with root README, excluding any previous root readme if present
-import zipfile, os
-newzip='/mnt/data/fullstack_project_first_with_readme.zip'
-with zipfile.ZipFile(p,'r') as zin, zipfile.ZipFile(newzip,'w',zipfile.ZIP_DEFLATED) as zout:
-    for item in zin.infolist():
-        if item.filename == 'fullstack_project_first/README.md':
-            continue
-        zout.writestr(item, zin.read(item.filename))
-    zout.writestr('fullstack_project_first/README.md', readme)
-os.path.getsize(out), os.path.getsize(newzip)
+
